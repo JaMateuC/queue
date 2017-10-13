@@ -1,9 +1,12 @@
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import org.apache.log4j.Logger;
 
 public class test {
 
     private static Queueimpl cua;
+    final static Logger logger = Logger.getLogger(test.class);
 
     @Before
     public void initQueueimpl(){
@@ -17,23 +20,20 @@ public class test {
 
     @Test
     public  void testPop(){
-        cua.push(3);
-        int num = cua.size();
+        //cua.push(3);
+        //int num = cua.size();
 
-        System.out.println(num);
-        Object num2 = cua.pop();
-        num = cua.size();
+        try{
+            Object num2 = cua.pop();
+            int num3 = cua.size();
+            assertEquals(0,num3);
+        }catch(ArrayIndexOutOfBoundsException ex){
+            logger.error("No hay nada en la cola");
+        }
 
-        System.out.println(num);
-    }
 
-    @Test
-    public  void testSize(){
-        cua.push(3);
+        //assertEquals(1,num);
 
-        int num = cua.size();
-
-        System.out.println(num);
     }
 
 }

@@ -21,12 +21,8 @@ public class Queueimpl<T> implements Queue<T> {
 
 
     public T pop() {
-        if(num == 0)
-            return null;
-        else{
-            num--;
-            return vector[num];
-        }
+        num--;
+        return vector[num];
     }
 
 
